@@ -1,4 +1,3 @@
-# app.py
 import streamlit as st
 import mlflow
 import mlflow.sklearn
@@ -7,8 +6,7 @@ import numpy as np
 from processing_titanic import process
 
 # Load model
-model_uri = "mlruns/572154434779452171/ace202b2b0e84ed1b5abc214906dbece/artifacts/random_forest_model"
-model = mlflow.sklearn.load_model(model_uri)
+model = mlflow.sklearn.load_model("model/")
 # Load data để lấy feature names
 _, _, _, _, _, X_test, _, _ = process()
 feature_names = X_test.columns.tolist()
