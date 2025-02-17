@@ -8,7 +8,8 @@ import processing_titanic
 
 X_train, X_temp, y_train, y_temp, X_valid, X_test, y_valid, y_test=processing_titanic.process()
 # Bắt đầu một run mới trong MLFlow
-with mlflow.start_run():
+ex=mlflow.set_experiment(experiment_name='experiment1')
+with mlflow.start_run(experiment_id=ex.experiment_id):
     # Khởi tạo mô hình Random Forest
     model = RandomForestClassifier(n_estimators=100, random_state=42)
     
@@ -55,7 +56,8 @@ with mlflow.start_run():
     
     # Log mô hình
     mlflow.sklearn.log_model(model, "random_forest_model")
-    
+    # Sau khi train và log model
+    mlflow.sklearn.save_model(model, "model/")
     # In kết quả
     print(f"Mean CV Accuracy: {mean_cv_accuracy}")
     print(f"Validation Accuracy: {valid_accuracy}")
