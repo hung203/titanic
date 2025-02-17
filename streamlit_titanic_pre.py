@@ -7,9 +7,8 @@ import numpy as np
 from processing_titanic import process
 
 # Load model
-model_uri = "runs:/a5fa6f3fd7cf4baaa7db73e1d065ac55/random_forest_model"
+model_uri = "mlruns/572154434779452171/ace202b2b0e84ed1b5abc214906dbece/artifacts/random_forest_model"
 model = mlflow.sklearn.load_model(model_uri)
-
 # Load data để lấy feature names
 _, _, _, _, _, X_test, _, _ = process()
 feature_names = X_test.columns.tolist()
